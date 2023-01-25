@@ -35,8 +35,16 @@ if(numOfDivsEachSide > 64) {
         alert("Maximum is 64 !!")
         return;
 }
-divsNum(numOfDivsEachSide);
+else if (numOfDivsEachSide > 1 && numOfDivsEachSide <= 64){
+    divsNum(numOfDivsEachSide);
+}
+else {
+    alert("no no")
+    return;
+}
 })
 
 
-
+// square.addEventListener('mousedown', () => {
+    
+// })
