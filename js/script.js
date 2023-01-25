@@ -35,7 +35,7 @@ if(numOfDivsEachSide > 64) {
         alert("Maximum is 64 !!")
         return;
 }
-else if (numOfDivsEachSide > 1 && numOfDivsEachSide <= 64){
+else if (numOfDivsEachSide >= 1 && numOfDivsEachSide <= 64){
     divsNum(numOfDivsEachSide);
 }
 else {
