@@ -8,8 +8,8 @@
     <script src="js/script.js" defer></script>
     <title>Etch-a-Sketch</title>
 </head>
-<body>
-    <div id="container"></div>
+<body ondragstart="return false;" ondrop="return false;">
+    <div id="container" draggable="false"></div>
     <input class ="divs-num" type="text" list="grids">
     <datalist id="grids">
         <option value="16">16 x 16</option>
