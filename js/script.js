@@ -3,9 +3,7 @@ container.classList.add(`container`);
 
 const submit = document.querySelector('.submit-grid');
 const inputOfGrid = document.querySelector('.divs-num');
-
 const inputOfColor = document.querySelector('#color-picker')
-
 const rainbowMode = document.querySelector('.rainbow')
 
 let num;
