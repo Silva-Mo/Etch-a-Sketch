@@ -126,3 +126,7 @@ function getRainbowColor(){
 rainbowMode.addEventListener('click', () => {
     flag = !flag;
 })
+
+inputOfColor.addEventListener('click', () => {
+    flag = true;
+})

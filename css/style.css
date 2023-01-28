@@ -10,8 +10,6 @@ body {
     width: 500px;
     display: grid;
     border: 1px solid black;
-    grid-template-columns: repeat(16, auto);
-    grid-template-rows: repeat(16, auto);
 }
 
 .square {
