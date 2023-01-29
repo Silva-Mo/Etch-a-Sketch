@@ -7,17 +7,33 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
     <title>Etch-a-Sketch</title>
+    <style>
+
+    </style>
 </head>
 <body ondragstart="return false;" ondrop="return false;">
-    <div id="container" draggable="false"></div>
-    <input class ="divs-num" type="text" list="grids">
-    <datalist id="grids">
-        <option value="16">16 x 16</option>
-        <option value="32">32 x 32</option>
-        <option value="64">32 x 32</option>   
-    </datalist>
-    <button class="submit-grid">Submit</button>
-    <input type="color" id="color-picker" value:#000000>
-    <button class="rainbow">Rainbow</button>
+    <div class="header">
+        <h1>Etch a Sketch</h1>
+    </div>
+      <div class="content">
+        <div class="options">
+        <input class ="divs-num" type="text" list="grids">
+        <datalist id="grids">
+            <option value="16">16 x 16</option>
+            <option value="32">32 x 32</option>
+            <option value="64">64x 64</option>   
+        </datalist>
+        <button class="submit-grid">Submit</button>
+        <input type="color" id="color-picker-sketch" value= "#000000">
+        <button class="rgb">RGB</button>
+        <button class="eraser">Eraser</button>
+        <button class="clear">Clear</button>
+        <input type="color" id="color-picker-grid" value = "#ffffff">
+        <button class="submit-color-grid">Submit</button>
+        <button class="grid-lines">add lines</button>
+     </div>
+      <div id="container" draggable="false"></div>
+    </div>
+    <div class="footer"></div>
 </body>
 </html>
