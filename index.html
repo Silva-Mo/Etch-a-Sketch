@@ -4,36 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
-    <title>Etch-a-Sketch</title>
+    <link rel="stylesheet" href="css/style.css">
     <style>
-
     </style>
+    <title>Etch-a-Sketch</title>
+    
 </head>
 <body ondragstart="return false;" ondrop="return false;">
     <div class="header">
-        <h1>Etch a Sketch</h1>
+        <h1>Etch-a-Sketch</h1>
     </div>
       <div class="content">
         <div class="options">
-        <input class ="divs-num" type="text" list="grids">
-        <datalist id="grids">
-            <option value="16">16 x 16</option>
-            <option value="32">32 x 32</option>
-            <option value="64">64x 64</option>   
-        </datalist>
-        <button class="submit-grid">Submit</button>
-        <input type="color" id="color-picker-sketch" value= "#000000">
-        <button class="rgb">RGB</button>
-        <button class="eraser">Eraser</button>
-        <button class="clear">Clear</button>
-        <input type="color" id="color-picker-grid" value = "#ffffff">
-        <button class="submit-color-grid">Submit</button>
-        <button class="grid-lines">add lines</button>
+        <h3>Tools</h3>
+        <div class="section first">
+           <div class="txt-for-size">Change resolution:</div>
+           <div class="size-settings">
+              <input class ="divs-num" type="number" min="1" max="64" value="16">
+              <button class="submit-grid">Submit</button>
+           </div>
+        </div>
+        <div class="section second">
+           <div class="color-picker-section">
+             <div class="picker-text">Choose a color:</div> 
+             <input type="color" id="color-picker-sketch" value= "#000000">
+           </div>
+           <button class="rgb">TURN RGB ON</button>
+        </div>
+        <div class="section third">
+           <button class="eraser">Erase</button>
+           <button class="clear">Clear</button>
+        </div>
+        <div class="section last">
+         <div class="grid-shape-tools">
+          <div class="text-of-background">background color:</div>
+           <input type="color" id="color-picker-grid" value = "#ffffff">
+         </div>
+          <button class="grid-lines">Add lines</button>
+        </div>
      </div>
       <div id="container" draggable="false"></div>
     </div>
-    <div class="footer"></div>
+    <div class="footer">
+      <a href="https://github.com/Silva-Mo/Etch-a-Sketch">Copyright © Webpage by: Silva-Mo</a>
+    </div>
 </body>
 </html>

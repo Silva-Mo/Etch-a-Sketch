@@ -34,9 +34,6 @@ grid-template-rows: repeat(${numForDivs}, auto);`);
     console.log(num);
 }
 
-
-
-
 divsNum();
 sketch();
 
@@ -58,7 +55,12 @@ submit.addEventListener('click', () => {
 })
 
 let mouseOver = function () {
+    if (flag2){
     this.setAttribute('style', `background-color: ${getColor()};`);
+    }
+    else if (flag2 === false){
+    this.removeAttribute('style');
+    }
 }
 
 function sketch() {
@@ -79,32 +81,35 @@ function sketch() {
     })
 }
 
-let flag3 = true;
-let flag2 = "";
+let flag2 = true;
 let flag = true;
 
 function getColor() {
-    if (flag2 === "") {
+    if (flag) {
         let color = inputOfColor.value;
         return color;
     }
-    else if (flag2 === "A") {
+    else if (flag === false) {
         return getRGBColor();
     }
 }
 
 function getRGBColor() {
     let randomNum = Math.random();
-    if (randomNum > 0 && randomNum <= 0.2) {
-        return '#34ebe8';
+    if (randomNum > 0 && randomNum <= 0.1) {
+        return '#0000e6';
     }
-    else if (randomNum >= 0.2 && randomNum <= 0.4) {
-        return '#f556d2';
-
+    else if (randomNum >= 0.1 && randomNum <= 0.2) {
+        return '#ff3300';
+    }
+    else if (randomNum >= 0.2 && randomNum <= 0.3) {
+        return '#ff66ff';
+    }
+    else if (randomNum >= 0.3 && randomNum <= 0.4) {
+        return '#999966';
     }
     else if (randomNum >= 0.4 && randomNum <= 0.5) {
-        return '#9000ff';
-
+        return '#00ffff';
     }
     else if (randomNum >= 0.5 && randomNum <= 0.6) {
         return '#918d90';
@@ -128,15 +133,35 @@ function getRGBColor() {
 rgb.addEventListener('click', () => {
     flag = !flag;
     if (flag === false) {
-        flag2 = "A";
+        flag2 = true;
+        eraser.textContent ='Erase';
+        eraser.removeAttribute('style');
+        rgb.setAttribute('style', `
+        color: black;
+        background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+        background-size: 1800% 1800%;
+        
+        -webkit-animation: rainbow 4.5s ease infinite;
+        -z-animation: rainbow 4.5s ease infinite;
+        -o-animation: rainbow 4.5s ease infinite;
+          animation: rainbow 4.5s ease infinite;
+       `);
+        rgb.textContent = "RGB IS ON"
     }
     else if (flag) {
-        flag2 = "";
+        rgb.removeAttribute('style');
+        rgb.textContent = 'TURN RGB ON'
     }
 })
 
 inputOfColor.addEventListener('click', () => {
-    flag2 = "";
+    flag2 = true;
+    flag = true;
+    rgb.removeAttribute('style');
+    rgb.textContent = 'TURN RGB ON';
+    eraser.textContent ='Erase';
+    eraser.removeAttribute('style');
+    
 })
 
 function clear() {
@@ -153,40 +178,89 @@ function erase() {
 }
 
 eraser.addEventListener('click', () => {
-    flag3 = !flag3;
-    if (flag3 === false) {
-        flag2 = "B";
+    flag2 = !flag2;
+    if (flag2 === false) {
+        eraser.textContent = "Eraser is enabled";
+        eraser.setAttribute('style', `
+        background-image: none;
+        background-color: white; 
+        color: #000000; 
+        border: 2px solid black; 
+        font-size: 15px;`);
     }
-    else if (flag3) {
-        if (flag === false) {
-            flag2 = "A";
-        }
-        else if (flag) {
-            flag2 = "";
-        }
-
+    else if (flag2) {
+        eraser.textContent = 'Erase';
+        eraser.removeAttribute('style');
     }
 })
 
 
 
-submitGridColor.addEventListener('click', () => {
-  
+backgroundColor.addEventListener('change', () => {
     let squares = document.querySelectorAll('.square');
-    squares.forEach((square) => {
+    squares.forEach(() => {
         let gridColor = backgroundColor.value;
-        document.getElementsByTagName('style')[0].innerHTML =`.square-changed {background-color:${gridColor};}`;
-        square.classList.add('square-changed');
+        document.getElementsByTagName('style')[0].innerHTML =`.square {background-color: ${gridColor};}`; 
     })
 })
 
-let flag4 = true;
+let flag3 = true;
 gridLines.addEventListener('click', () => {
-flag4 = !flag4;
-if (flag4){
+flag3 = !flag3;
+if (flag3){
     container.classList.remove('container-lined');
+    gridLines.removeAttribute('style');
+    gridLines.textContent = "Add lines";
 }
-else if (flag4 === false) {
+else if (flag3 === false) {
     container.classList.add('container-lined');
+    gridLines.textContent = "Lines are added";
+    gridLines.setAttribute('style', `
+        background-image: none;
+        background-color: white; 
+        color: #000000; 
+        border: 2px solid black; 
+        font-size: 15px;`);
 }
+})
+
+rgb.addEventListener('mousedown', () => {
+    rgb.setAttribute('style', "transform: scale(0.98); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
+})
+
+rgb.addEventListener('mouseup', () => {
+    rgb.removeAttribute('style');
+})
+
+submit.addEventListener('mousedown', () => {
+    submit.setAttribute('style', "transform: scale(0.999); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
+})
+
+submit.addEventListener('mouseup', () => {
+    submit.removeAttribute('style');
+})
+
+
+eraser.addEventListener('mousedown', () => {
+    eraser.setAttribute('style', "transform: scale(0.999); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
+})
+
+eraser.addEventListener('mouseup', () => {
+    eraser.removeAttribute('style');
+})
+
+clearBtn.addEventListener('mousedown', () => {
+    clearBtn.setAttribute('style', "transform: scale(0.999); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
+})
+
+clearBtn.addEventListener('mouseup', () => {
+    clearBtn.removeAttribute('style');
+})
+
+gridLines.addEventListener('mousedown', () => {
+    gridLines.setAttribute('style', "transform: scale(0.999); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
+})
+
+gridLines.addEventListener('mouseup', () => {
+    gridLines.removeAttribute('style');
 })
