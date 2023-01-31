@@ -1,5 +1,6 @@
 # Etch-a-Sketch
 this was my fourth TOP's project, this project mainly focuses on JavaScript DOM manipulation skills.
+
 Alhamdulillah
 
 # Skills and features needed in this project

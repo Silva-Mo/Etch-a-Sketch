@@ -106,7 +106,7 @@ function getRGBColor() {
         return '#ff66ff';
     }
     else if (randomNum >= 0.3 && randomNum <= 0.4) {
-        return '#999966';
+        return '#000000';
     }
     else if (randomNum >= 0.4 && randomNum <= 0.5) {
         return '#00ffff';

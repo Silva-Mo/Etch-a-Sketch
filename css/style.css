@@ -12,8 +12,6 @@
     src: url(../fonts/Courgette-Regular.ttf);
 }
 
-
-
 body {
     min-height: 100vh;
     display: flex;
@@ -97,12 +95,6 @@ body {
 
 .square:hover {
     background-color: rgb(133, 127, 127)
-}
-
-.square-down{
-  height: auto;
-  width: auto;
-  background-color: rgb(0, 0, 0);  
 }
 
 .options {
