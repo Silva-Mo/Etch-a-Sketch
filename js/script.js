@@ -15,10 +15,10 @@ let num;
 function divsNum(numForDivs = 16) {
 
     if (num !== undefined || num !== null || num !== "") {
-        for (let i = num; i >= 1; i--) {
-            let square = document.querySelector('.square');
+        let squares = document.querySelectorAll('.square');
+        squares.forEach((square) => {
             container.removeChild(square);
-        }
+        })
     }
 
     container.setAttribute('style', `grid-template-columns: repeat(${numForDivs}, auto);

@@ -88,14 +88,9 @@ body {
 }
 
 .square {
-    height: auto;
-    width: auto;
     background-color: rgb(255, 255, 255);
 }
 
-.square:hover {
-    background-color: rgb(133, 127, 127)
-}
 
 .options {
     height:580px;
