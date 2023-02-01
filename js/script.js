@@ -16,9 +16,10 @@ function divsNum(numForDivs = 16) {
 
     if (num !== undefined || num !== null || num !== "") {
         let squares = document.querySelectorAll('.square');
-        squares.forEach((square) => {
-            container.removeChild(square);
-        })
+        for (let i = 0; i < squares.length; i++) {
+          let square = squares[i];
+          container.removeChild(square);
+         }
     }
 
     container.setAttribute('style', `grid-template-columns: repeat(${numForDivs}, auto);
@@ -28,10 +29,8 @@ grid-template-rows: repeat(${numForDivs}, auto);`);
     for (let i = 1; i < (num + 1); i++) {
         const square = document.createElement('div');
         square.classList.add('square')
-        square.setAttribute('draggable', 'false');
         container.appendChild(square);
     }
-    console.log(num);
 }
 
 divsNum();
@@ -65,20 +64,18 @@ let mouseOver = function () {
 
 function sketch() {
     let squares = document.querySelectorAll('.square');
-    squares.forEach((square) => {
-        square.addEventListener('click', () => {
-            square.setAttribute('style', `background-color: ${getColor()};`);
+    for (let i = 0; i < squares.length; i++) {
+       squares[i].addEventListener('click', () => {
+            squares[i].setAttribute('style', `background-color: ${getColor()};`);
         })
         window.addEventListener('mouseup', () => {
-            square.removeEventListener('mouseenter', mouseOver);
+            squares[i].removeEventListener('mouseenter', mouseOver);
         })
         window.addEventListener('mousedown', () => {
-            square.addEventListener('mouseenter', mouseOver);
-        })
+            squares[i].addEventListener('mouseenter', mouseOver);
+        }) 
 
-
-
-    })
+    }
 }
 
 let flag2 = true;
@@ -166,16 +163,13 @@ inputOfColor.addEventListener('click', () => {
 
 function clear() {
     let squares = document.querySelectorAll('.square');
-    squares.forEach((square) => {
-        square.removeAttribute('style');
-    })
+    for(let i = 0; i < squares.length; i++){
+    squares[i].removeAttribute('style');
+    }
 }
 
 clearBtn.addEventListener('click', clear);
 
-function erase() {
-    this.removeAttribute('style');
-}
 
 eraser.addEventListener('click', () => {
     flag2 = !flag2;
@@ -193,15 +187,12 @@ eraser.addEventListener('click', () => {
         eraser.removeAttribute('style');
     }
 })
-
-
-
 backgroundColor.addEventListener('change', () => {
     let squares = document.querySelectorAll('.square');
-    squares.forEach(() => {
+    for (let i = 0; i < squares.length; i++){
         let gridColor = backgroundColor.value;
         document.getElementsByTagName('style')[0].innerHTML =`.square {background-color: ${gridColor};}`; 
-    })
+    }
 })
 
 let flag3 = true;
