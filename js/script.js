@@ -34,7 +34,7 @@ grid-template-rows: repeat(${numForDivs}, auto);`);
 }
 
 divsNum();
-sketch();
+
 
 submit.addEventListener('click', () => {
     let numOfDivsEachSide;
@@ -50,10 +50,12 @@ submit.addEventListener('click', () => {
         alert("Please Type a number that is between 1 and 64");
         return;
     }
-    sketch();
+    ;
 })
 
+let isDrawing = false;
 let mouseOver = function (e) {
+  if(isDrawing){
     let square = e.target.closest('.square');
     if (square === null){
         return;
@@ -64,23 +66,14 @@ let mouseOver = function (e) {
     else if (flag2 === false){
     square.removeAttribute('style');
     }
+  }
 }
 
-function sketch() {
-    container.addEventListener('click', (e) => {
-        let square = e.target.closest('.square');
-        if (square === null){
-            return;
-        }
-        square.setAttribute('style', `background-color: ${getColor()}`)
-    })
-    window.addEventListener('mousedown', () => {
-        container.addEventListener('mouseover', mouseOver);
-    })
-    window.addEventListener('mouseup', () => {
-        container.removeEventListener('mouseover', mouseOver);
-    })
-}
+window.addEventListener('mousedown', () =>
+  isDrawing = true)
+window.addEventListener('mouseup', () =>
+  isDrawing = false);
+container.addEventListener('mouseover', mouseOver);
 
 
 let flag2 = true;

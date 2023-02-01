@@ -19,7 +19,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin: 0;
-    background-image: linear-gradient(#d2d7dd,#302e2e);
+    background-image: linear-gradient(#acafb3,#302e2e);
 }
 
 .header {
@@ -33,25 +33,10 @@ body {
 
 .header h1 {
     font-size: 40px;
-    color: white;
+    color: rgb(255, 255, 255);
     font-family: 'Aboreto';
-    -webkit-animation: glow 1s ease-in-out infinite alternate;
-        -moz-animation: glow 1s ease-in-out infinite alternate;
-        animation: glow 1s ease-in-out infinite alternate;
+    text-shadow: 10px 10px 10px rgb(0, 0, 0);
 }
-
- @-webkit-keyframes glow {
-    from {
-      text-shadow: 0 0 10px #1f1e1e, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #413f3f, 
-                   0 0 50px #292829, 0 0 60px #5a565c, 0 0 70px #faf4fd;
-    }
-    to {
-      text-shadow: 0 0 20px #333232, 0 0 30px #4d4b4c, 0 0 40px #161616, 0 0 50px #343435,
-                   0 0 60px #252425, 0 0 70px #bbabb3, 0 0 80px #808080;
-    }
-  }
-
-
 
 @media only screen and (max-width: 600px) {
     .container {
