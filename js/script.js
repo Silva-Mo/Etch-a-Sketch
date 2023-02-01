@@ -53,30 +53,35 @@ submit.addEventListener('click', () => {
     sketch();
 })
 
-let mouseOver = function () {
+let mouseOver = function (e) {
+    let square = e.target.closest('.square');
+    if (square === null){
+        return;
+    }
     if (flag2){
-    this.setAttribute('style', `background-color: ${getColor()};`);
+    square.setAttribute('style', `background-color: ${getColor()};`);
     }
     else if (flag2 === false){
-    this.removeAttribute('style');
+    square.removeAttribute('style');
     }
 }
 
 function sketch() {
-    let squares = document.querySelectorAll('.square');
-    for (let i = 0; i < squares.length; i++) {
-       squares[i].addEventListener('click', () => {
-            squares[i].setAttribute('style', `background-color: ${getColor()};`);
-        })
-        window.addEventListener('mouseup', () => {
-            squares[i].removeEventListener('mouseenter', mouseOver);
-        })
-        window.addEventListener('mousedown', () => {
-            squares[i].addEventListener('mouseenter', mouseOver);
-        }) 
-
-    }
+    container.addEventListener('click', (e) => {
+        let square = e.target.closest('.square');
+        if (square === null){
+            return;
+        }
+        square.setAttribute('style', `background-color: ${getColor()}`)
+    })
+    window.addEventListener('mousedown', () => {
+        container.addEventListener('mouseover', mouseOver);
+    })
+    window.addEventListener('mouseup', () => {
+        container.removeEventListener('mouseover', mouseOver);
+    })
 }
+
 
 let flag2 = true;
 let flag = true;
