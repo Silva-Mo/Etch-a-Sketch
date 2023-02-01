@@ -73,6 +73,16 @@ window.addEventListener('mousedown', () =>
   isDrawing = true)
 window.addEventListener('mouseup', () =>
   isDrawing = false);
+
+container.addEventListener('click', (e) => {
+    let square = e.target.closest('.square');
+    if (flag2){
+       square.setAttribute('style', `background-color: ${getColor()};`);  
+    }
+    else if (flag2 === false){
+        square.removeAttribute('style');
+    }
+})
 container.addEventListener('mouseover', mouseOver);
 
 
