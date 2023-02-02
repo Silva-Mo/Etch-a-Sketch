@@ -76,6 +76,9 @@ window.addEventListener('mouseup', () =>
 
 container.addEventListener('click', (e) => {
     let square = e.target.closest('.square');
+    if (square === null){
+        return;
+    }
     if (flag2){
        square.setAttribute('style', `background-color: ${getColor()};`);  
     }
