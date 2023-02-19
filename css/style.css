@@ -192,7 +192,7 @@ input[type='color']:active {
   input[type='color']::-webkit-color-swatch {
     border: none;
     border-radius: 50px;
-    box-shadow: rgba(0, 0, 0, 0) 0px 1px 2px;
+    box-shadow: rgba(255, 255, 255, 0) 0px 1px 2px;
   }
 
 #color-picker-sketch {
@@ -230,7 +230,7 @@ input[type='color']:active {
     color: black;
     border: 2px solid rgb(0, 0, 0);
     font-family: "Ubuntu", sans-serif;
-    font-size: 17px;
+    font-size: 14px;
     transition: 0.1s;
     height: 38px;
 }
@@ -384,15 +384,88 @@ input[type='color']:active {
     display: flex;
     justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .footer a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Ubuntu';
     color: #ffffff;
     font-size: 18px;
     text-decoration: none;
+    gap: 5px;
 }
 
 .footer a:hover {
     color: #b3b3b3;
+}
+
+.grabber {
+    margin-left: 7px;
+    border-radius: 5px;
+    background-image: linear-gradient(90deg, #7a7878, #adadad);
+    color: black;
+    border: 2px solid rgb(0, 0, 0);
+    font-family: "Ubuntu", sans-serif;
+    font-size: 14px;
+    transition: 0.1s;
+    height: 38px;
+}
+
+.grabber:hover{
+    background-image: none;
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    transform: scale(1.1);
+}
+
+.darken {
+    border-radius: 5px;
+    background-image: linear-gradient(90deg, #7a7878, #adadad);
+    color: black;
+    border: 2px solid rgb(0, 0, 0);
+    font-family: "Ubuntu", sans-serif;
+    font-size: 14px;
+    transition: 0.1s;
+    height: 38px;
+}
+
+.darken:hover {
+    background-image: none;
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    transform: scale(1.1);
+}
+
+.lighten {
+    border-radius: 5px;
+    background-image: linear-gradient(90deg, #7a7878, #adadad);
+    color: black;
+    border: 2px solid rgb(0, 0, 0);
+    font-family: "Ubuntu", sans-serif;
+    font-size: 14px;
+    transition: 0.1s;
+    height: 38px;
+}
+
+.lighten:hover {
+    background-image: none;
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    transform: scale(1.1);
+}
+
+.color-options {
+    display: flex;
+    gap: 10px;
+}
+
+.footer a img {
+    height: 24px;
+    width: auto;
 }
