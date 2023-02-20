@@ -18,6 +18,8 @@ let lightenFlag = false;
 let darkenFlag = false;
 let grabberFlag = false;
 let num;
+
+
 function divsNum(numForDivs = 16) {
 
     if (num !== undefined || num !== null || num !== "") {
@@ -100,29 +102,30 @@ let mouseOver = function (e) {
 }
 
 function lightenMode (rgbColor){
-        let sliced = rgbColor.slice(4);
-        let slicedEnd = sliced.slice(0, -1);
-        let array = slicedEnd.split(", ")
-        let red = Math.floor(+array[0] + (255 - array[0]) * 0.1);
-        let green = Math.floor(+array[1] + (255 - array[1]) * 0.1);  
-        let blue = Math.floor(+array[2] + (255 - array[2]) * 0.1);
-        if (red >= '246' && green >= '246' && blue >= '246'){
-            return '#ffffff'
-        }
-        let colorInHex = rgbToHex(+red, +green ,+blue);
-        return colorInHex;
+    let sliced = rgbColor.slice(4);
+    let slicedEnd = sliced.slice(0, -1);
+    let array = slicedEnd.split(", ")
+    
+    let red = array[0]
+    let green = array[1]   
+    let blue = array [2]
+    let colorInHex = rgbToHex(+red, +green ,+blue);
+    return shadeColor(colorInHex, 15);
 }
 
 function darkenMode (rgbColor) {
         let sliced = rgbColor.slice(4);
         let slicedEnd = sliced.slice(0, -1);
         let array = slicedEnd.split(", ")
-        
-        let red = Math.round(array[0] * (1 - 0.2));
-        let green = Math.round(array[1] * (1 - 0.2));  
-        let blue = Math.round(array[2] * (1 - 0.2));
+        let red = array[0]
+        let green = array[1]   
+        let blue = array [2]
         let colorInHex = rgbToHex(+red, +green ,+blue);
-        return colorInHex;
+        return shadeColor(colorInHex, -15);;
+}
+
+function shadeColor(color, amount) {
+    return '#' + color.replace(/^#/, '').replace(/../g, color => ('0'+Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
 }
 
 
@@ -178,6 +181,9 @@ function clickSquare (e) {
         let blue = array [2]; 
         let colorInHex = rgbToHex(+red, +green ,+blue);
         inputOfColor.value = colorInHex;
+        grabberFlag = false;
+        grabberBtn.textContent = 'Grabber';
+        grabberBtn.removeAttribute('style');
     }
 }
 
@@ -444,67 +450,13 @@ lightenBtn.addEventListener('click', () => {
     }
 })
 
-rgb.addEventListener('mousedown', () => {
-    rgb.setAttribute('style', "transform: scale(0.98); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
-})
-
-rgb.addEventListener('mouseup', () => {
-    rgb.removeAttribute('style');
-})
-
-submit.addEventListener('mousedown', () => {
-    submit.setAttribute('style', "transform: scale(0.999); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
-})
-
-submit.addEventListener('mouseup', () => {
-    submit.removeAttribute('style');
-})
-
-
-eraser.addEventListener('mousedown', () => {
-    eraser.setAttribute('style', "transform: scale(0.999); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
-})
-
-eraser.addEventListener('mouseup', () => {
-    eraser.removeAttribute('style');
-})
-
-clearBtn.addEventListener('mousedown', () => {
-    clearBtn.setAttribute('style', "transform: scale(0.999); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
-})
-
-clearBtn.addEventListener('mouseup', () => {
-    clearBtn.removeAttribute('style');
-})
-
-gridLines.addEventListener('mousedown', () => {
-    gridLines.setAttribute('style', "transform: scale(0.999); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
-})
-
-gridLines.addEventListener('mouseup', () => {
-    gridLines.removeAttribute('style');
-})
-
-grabberBtn.addEventListener('mousedown', () => {
-    grabberBtn.setAttribute('style', "transform: scale(0.999); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
-})
-
-grabberBtn.addEventListener('mouseup', () => {
-    grabberBtn.removeAttribute('style');
-})
-
-darkenBtn.addEventListener('mousedown', () => {
-    darkenBtn.setAttribute('style', "transform: scale(0.999); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
-})
-
-darkenBtn.addEventListener('mouseup', () => {
-    darkenBtn.removeAttribute('style');
-})
-
-lightenBtn.addEventListener('mousedown', () => {
-    lightenBtn.setAttribute('style', "transform: scale(0.999); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
-})
-
-lightenBtn.addEventListener('mouseup', () => {
-    lightenBtn.removeAttribute('style');
+let arrayOfBtns = [rgb, submit, eraser, clearBtn, gridLines, grabberBtn, darkenBtn, lightenBtn];
+arrayOfBtns.forEach((btn) => {
+    btn.addEventListener('mousedown', () => {
+        btn.setAttribute('style', "transform: scale(0.98); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
+    })
+    
+    btn.addEventListener('mouseup', () => {
+        btn.removeAttribute('style');
+    })
 })
