@@ -257,13 +257,7 @@ rgb.addEventListener('click', () => {
         eraser.removeAttribute('style');
         rgb.setAttribute('style', `
         color: black;
-        background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
-        background-size: 1800% 1800%;
-        
-        -webkit-animation: rainbow 4.5s ease infinite;
-        -z-animation: rainbow 4.5s ease infinite;
-        -o-animation: rainbow 4.5s ease infinite;
-          animation: rainbow 4.5s ease infinite;
+        background: linear-gradient(124deg, red, yellow, green);
        `);
         rgb.textContent = "RGB IS ON";
     }
