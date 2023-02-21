@@ -63,42 +63,45 @@ submit.addEventListener('click', () => {
 let isDrawing = false;
 let mouseOver = function (e) {
   if(isDrawing){
-    let square = e.target.closest('.square');
-    if (square === null){
-        return;
-    }
-    if (lightenFlag === false){
-        if (darkenFlag === false){
-            if (flag2){
-            square.setAttribute('style', `background-color: ${getColor()};`);
+    if (!grabberFlag){
+        let square = e.target.closest('.square');
+        if (square === null){
+            return;
+        }
+        if (lightenFlag === false){
+            if (darkenFlag === false){
+                if (flag2){
+                square.setAttribute('style', `background-color: ${getColor()};`);
+                }
+                else if (flag2 === false){
+                square.removeAttribute('style');
+                }    
             }
-            else if (flag2 === false){
-            square.removeAttribute('style');
+            else if (darkenFlag){
+                if (flag2){
+                    let currentColor = getCssSquareColor(square);
+                    square.removeAttribute('style');
+                    square.setAttribute('style', `background-color: ${darkenMode(currentColor)};`);
+                }
+                    else if (flag2 === false){
+                    square.removeAttribute('style');
+                }  
             }    
         }
-        else if (darkenFlag){
+        else if (lightenFlag){
             if (flag2){
                 let currentColor = getCssSquareColor(square);
                 square.removeAttribute('style');
-                square.setAttribute('style', `background-color: ${darkenMode(currentColor)};`);
+                square.setAttribute('style', `background-color: ${lightenMode(currentColor)};`);
             }
                 else if (flag2 === false){
                 square.removeAttribute('style');
-            }  
-        }    
-    }
-    else if (lightenFlag){
-        if (flag2){
-            let currentColor = getCssSquareColor(square);
-            square.removeAttribute('style');
-            square.setAttribute('style', `background-color: ${lightenMode(currentColor)};`);
+            } 
         }
-            else if (flag2 === false){
-            square.removeAttribute('style');
-        } 
+        
+    }    
     }
     
-  }
 }
 
 function lightenMode (rgbColor){
@@ -299,6 +302,9 @@ clearBtn.addEventListener('click', clear);
 eraser.addEventListener('click', () => {
     flag2 = !flag2;
     if (flag2 === false) {
+        grabberFlag = false;
+        grabberBtn.textContent = 'Grabber';
+        grabberBtn.removeAttribute('style');
         eraser.textContent = "Eraser is enabled";
         eraser.setAttribute('style', `
         background-image: none;
