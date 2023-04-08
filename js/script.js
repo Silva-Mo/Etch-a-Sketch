@@ -35,7 +35,7 @@ grid-template-rows: repeat(${numForDivs}, auto);`);
     num = numForDivs * numForDivs;
     for (let i = 1; i < (num + 1); i++) {
         const square = document.createElement('div');
-        square.classList.add('square')
+        square.classList.add('square');
         container.appendChild(square);
     }
 }
@@ -47,7 +47,7 @@ submit.addEventListener('click', () => {
     let numOfDivsEachSide;
     numOfDivsEachSide = inputOfGrid.value;
     if (numOfDivsEachSide > 64) {
-        alert("Maximum is 64 !!")
+        alert("Maximum is 64 !!");
         return;
     }
     else if (numOfDivsEachSide >= 1 && numOfDivsEachSide <= 64) {
@@ -107,11 +107,10 @@ let mouseOver = function (e) {
 function lightenMode (rgbColor){
     let sliced = rgbColor.slice(4);
     let slicedEnd = sliced.slice(0, -1);
-    let array = slicedEnd.split(", ")
-    
-    let red = array[0]
-    let green = array[1]   
-    let blue = array [2]
+    let array = slicedEnd.split(", ");
+    let red = array[0];
+    let green = array[1];   
+    let blue = array [2];
     let colorInHex = rgbToHex(+red, +green ,+blue);
     return shadeColor(colorInHex, 15);
 }
@@ -119,10 +118,10 @@ function lightenMode (rgbColor){
 function darkenMode (rgbColor) {
         let sliced = rgbColor.slice(4);
         let slicedEnd = sliced.slice(0, -1);
-        let array = slicedEnd.split(", ")
-        let red = array[0]
-        let green = array[1]   
-        let blue = array [2]
+        let array = slicedEnd.split(", ");
+        let red = array[0];
+        let green = array[1];   
+        let blue = array [2];
         let colorInHex = rgbToHex(+red, +green ,+blue);
         return shadeColor(colorInHex, -15);;
 }
@@ -133,7 +132,7 @@ function shadeColor(color, amount) {
 
 
 window.addEventListener('mousedown', () =>
-  isDrawing = true)
+  isDrawing = true);
 window.addEventListener('mouseup', () =>
   isDrawing = false);
 
@@ -351,20 +350,20 @@ function getCssSquareColor(element) {
     let css_obj = getComputedStyle(element);
   
     for (let i = 0; i < css_obj.length; i++) {
-        css_data.push(`${css_obj.getPropertyValue(css_obj[i])}`)
+        css_data.push(`${css_obj.getPropertyValue(css_obj[i])}`);
             
     }
-    return css_data[20];
+    return css_data[21];
 }
 
 const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
     const hex = x.toString(16)
     return hex.length === 1 ? '0' + hex : hex
-  }).join('')
+  }).join('');
 
 
 grabberBtn.addEventListener('click', () => {
-    grabberFlag = !grabberFlag
+    grabberFlag = !grabberFlag;
     if (grabberFlag){
         lightenFlag = false;
         darkenFlag = false;
@@ -453,7 +452,7 @@ lightenBtn.addEventListener('click', () => {
 let arrayOfBtns = [rgb, submit, eraser, clearBtn, gridLines, grabberBtn, darkenBtn, lightenBtn];
 arrayOfBtns.forEach((btn) => {
     btn.addEventListener('mousedown', () => {
-        btn.setAttribute('style', "transform: scale(0.98); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px")
+        btn.setAttribute('style', "transform: scale(0.98); background-color: white; color: #000000; border: 2px solid black;  font-size: 15px");
     })
     
     btn.addEventListener('mouseup', () => {
