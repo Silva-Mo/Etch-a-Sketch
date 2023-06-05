@@ -345,15 +345,9 @@ else if (flag3 === false) {
 }
 })
 
-function getCssSquareColor(element) {
-    let css_data = [];
-    let css_obj = getComputedStyle(element);
-  
-    for (let i = 0; i < css_obj.length; i++) {
-        css_data.push(`${css_obj.getPropertyValue(css_obj[i])}`);
-            
-    }
-    return css_data[21];
+function getCssSquareColor(element) {       
+    let myDivObjBgColor = window.getComputedStyle(element).backgroundColor;
+    return myDivObjBgColor;
 }
 
 const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
